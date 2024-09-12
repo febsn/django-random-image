@@ -1,6 +1,3 @@
-# -*- coding: utf-8 -*-
-from __future__ import unicode_literals
-
 from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
 from django.utils.timezone import now
@@ -15,11 +12,10 @@ class ImageContainerManager(models.Manager):
             end_date__gt=now())
 
 
-@python_2_unicode_compatible
 class ImageContainer(models.Model):
     start_date = models.DateTimeField(verbose_name=_("start date"))
     end_date = models.DateTimeField(verbose_name=_("end date"))
-    image = FilerImageField(related_name=_("random_image_container"))
+    image = FilerImageField(related_name=_("random_image_container"), on_delete=models.CASCADE)
 
     objects = ImageContainerManager()
 

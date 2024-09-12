@@ -1,6 +1,3 @@
-# -*- coding: utf-8 -*-
-from __future__ import unicode_literals
-
 from django.db import migrations, models
 import filer.fields.image
 
@@ -18,7 +15,7 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(auto_created=True, verbose_name='ID', primary_key=True, serialize=False)),
                 ('start_date', models.DateTimeField(verbose_name='start date', auto_now_add=True)),
                 ('end_date', models.DateTimeField(verbose_name='end date')),
-                ('image', filer.fields.image.FilerImageField(to='filer.Image', related_name='random_image_container')),
+                ('image', filer.fields.image.FilerImageField(to='filer.Image', related_name='random_image_container', on_delete=models.CASCADE)),
             ],
             options={
                 'ordering': ['start_date'],
